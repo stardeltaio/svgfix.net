@@ -1,0 +1,82 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Theme CSS Variables */
+:root {
+  /* Light mode (default) */
+  --color-bg: 255 255 255;
+  --color-surface: 243 244 246;
+  --color-border: 229 231 235;
+  --color-text: 17 24 39;
+  --color-text-secondary: 107 114 128;
+  --color-primary: 59 130 246;
+  --color-primary-hover: 37 99 235;
+}
+
+:root.dark {
+  /* Dark mode */
+  --color-bg: 15 23 42;
+  --color-surface: 30 41 59;
+  --color-border: 51 65 85;
+  --color-text: 241 245 249;
+  --color-text-secondary: 148 163 184;
+  --color-primary: 96 165 250;
+  --color-primary-hover: 59 130 246;
+}
+
+@layer base {
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply bg-[rgb(var(--color-bg))] text-[rgb(var(--color-text))];
+    @apply min-h-screen;
+    @apply font-sans antialiased;
+  }
+
+  /* Prevent FOUC (Flash of Unstyled Content) */
+  html:not(.dark):not(.light) {
+    visibility: hidden;
+  }
+
+  html.dark,
+  html.light {
+    visibility: visible;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply px-4 py-2 rounded-lg font-medium;
+    @apply transition-colors duration-200;
+    @apply focus:outline-none focus:ring-2 focus:ring-offset-2;
+  }
+
+  .btn-primary {
+    @apply bg-[rgb(var(--color-primary))] text-white;
+    @apply hover:bg-[rgb(var(--color-primary-hover))];
+    @apply focus:ring-[rgb(var(--color-primary))];
+  }
+
+  .btn-secondary {
+    @apply bg-[rgb(var(--color-surface))] text-[rgb(var(--color-text))];
+    @apply border border-[rgb(var(--color-border))];
+    @apply hover:bg-[rgb(var(--color-border))];
+  }
+
+  .surface {
+    @apply bg-[rgb(var(--color-surface))];
+    @apply border border-[rgb(var(--color-border))];
+    @apply rounded-lg;
+  }
+
+  .code-editor {
+    @apply font-mono text-sm;
+    @apply bg-[rgb(var(--color-surface))];
+    @apply border border-[rgb(var(--color-border))];
+    @apply rounded-lg p-4;
+    @apply resize-none;
+  }
+}

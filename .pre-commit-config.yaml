@@ -1,0 +1,33 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.5.0
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-yaml
+      - id: check-json
+      - id: check-merge-conflict
+
+  - repo: local
+    hooks:
+      - id: eslint
+        name: eslint
+        entry: pnpm exec eslint
+        language: system
+        types: [javascript, typescript]
+        pass_filenames: false
+        args: ['.', '--ext', '.js,.ts,.astro,.vue']
+
+      - id: prettier
+        name: prettier
+        entry: pnpm exec prettier --check
+        language: system
+        types: [javascript, typescript, json, yaml, markdown]
+        pass_filenames: false
+
+      - id: astro-check
+        name: astro check
+        entry: pnpm exec astro check
+        language: system
+        pass_filenames: false
+        stages: [pre-push]
