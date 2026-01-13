@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import SvgTool from '../components/SvgTool.vue';
 ---
 
 <Layout>
@@ -9,22 +10,8 @@ import Footer from '../components/Footer.astro';
 
   <main class="flex-1 container mx-auto px-4 py-8">
     <div class="max-w-7xl mx-auto">
-      <!-- Tool UI Placeholder -->
-      <div
-        class="surface p-8 mb-8 text-center min-h-[600px] flex items-center justify-center"
-      >
-        <div>
-          <h2 class="text-2xl font-bold text-[rgb(var(--color-text))] mb-4">
-            SVG Tool Coming Soon
-          </h2>
-          <p class="text-[rgb(var(--color-text-secondary))]">
-            The interactive SVG normalization tool will be here.
-          </p>
-          <p class="text-[rgb(var(--color-text-secondary))] mt-2">
-            Phase 1 complete: Infrastructure ready!
-          </p>
-        </div>
-      </div>
+      <!-- SVG Tool UI -->
+      <SvgTool client:load />
 
       <!-- SEO Content Below the Fold -->
       <section class="prose dark:prose-invert max-w-none">
