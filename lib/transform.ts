@@ -40,7 +40,9 @@ export async function transformPathsToOrigin(
     return svgString;
   }
 
-  const { transformPath, pathToString } = await import('svg-path-commander');
+  const svgPathCommander = await import('svg-path-commander') as any;
+  const transformPath = svgPathCommander.transformPath || svgPathCommander.default?.transformPath;
+  const pathToString = svgPathCommander.pathToString || svgPathCommander.default?.pathToString;
 
   // Transform each path
   const pathRegex = /(<path[^>]*\sd=["'])([MLHVCSQTAZmlhvcsqtaz][^"']*)["']/gi;

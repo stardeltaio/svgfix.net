@@ -52,7 +52,8 @@ export async function getContentBounds(paths: string[]): Promise<import('./types
   let maxY = -Infinity;
 
   // Use svg-path-commander to get accurate bounding boxes
-  const { getPathBBox } = await import('svg-path-commander');
+  const svgPathCommander = await import('svg-path-commander') as any;
+  const getPathBBox = svgPathCommander.getPathBBox || svgPathCommander.default?.getPathBBox;
 
   for (const pathData of validPaths) {
     try {
@@ -107,7 +108,8 @@ export async function getPathBounds(pathData: string): Promise<import('./types')
     throw new TypeError('pathData must be a string');
   }
 
-  const { getPathBBox } = await import('svg-path-commander');
+  const svgPathCommander = await import('svg-path-commander') as any;
+  const getPathBBox = svgPathCommander.getPathBBox || svgPathCommander.default?.getPathBBox;
 
   try {
     const bbox = getPathBBox(pathData);
