@@ -40,6 +40,26 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <meta property="twitter:description" content={description} />
     <meta property="twitter:image" content={new URL('/og-image.png', Astro.site)} />
 
+    <!-- Structured Data -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "SVGFix",
+      "description": "Free online tool to normalize SVG viewBox and crop whitespace",
+      "url": "https://svgfix.net",
+      "applicationCategory": "DesignApplication",
+      "operatingSystem": "Any",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "author": {
+        "@type": "Organization",
+        "name": "Star Delta Software Ltd"
+      }
+    })} />
+
     <!-- Prevent FOUC with theme script -->
     <script is:inline>
       // Must run before page renders to prevent FOUC
