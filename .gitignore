@@ -53,3 +53,8 @@ pnpm-debug.log*
 .claude/
 CLAUDE.md
 LIVE_CONTEXT.md
+
+# Documentation (internal planning, not public)
+docs/ROADMAP.md
+docs/plans/
+docs/COMPETITIVE-ANALYSIS.md
